@@ -28,9 +28,8 @@ im = rgb2gray(im);
 antialias_sigma = 0.5;
 signal = im;
  
-[X Y] = meshgrid( 1:0.5:size(signal,2), 1:0.5:size(signal,1) );
-signal = interp2( signal, X, Y, '*linear' ); % im被扩充成  2 x N - 1  �?
- 
+[X, Y] = meshgrid( 1:0.5:size(signal,2), 1:0.5:size(signal,1) );
+signal = interp2( double(signal), X, Y, '*linear');
 subsample = [0.5]; %  降采样率
 %% 步骤1：生成高斯和差分高斯(DOG)金字�?
 %  这两个金字塔的数据分别存储在名为
