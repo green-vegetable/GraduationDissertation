@@ -1,4 +1,4 @@
-function [vertex,faces,normal] = ReadObj()
+function [vertex, number,faces,normal] = ReadObj()
 filename = 'foxiang-H-jh.obj'
 % filename = '01lhc.obj'
 fid = fopen(filename);
@@ -44,4 +44,6 @@ while 1
         end
     end
 end
+number = size(vertex, 2);
+vertex = [vertex; ones(1, number)];
 fclose(fid);
